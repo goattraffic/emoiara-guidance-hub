@@ -1,105 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Emoiara Design System - Contrast Serif Accent */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Core Colors - HSL only */
+    --background: 0 0% 99%;
+    --foreground: 231 48% 18%;
+    
+    --primary: 231 48% 35%; /* #283593 accent */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 231 55% 28%;
+    
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 231 48% 18%;
+    
+    --accent: 231 48% 35%;
+    --accent-light: 231 45% 92%;
+    
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    
+    --border: 220 13% 91%;
+    --input-border: 220 13% 87%;
+    --ring: 231 48% 35%;
+    
+    /* Shadows & Effects */
+    --shadow-sm: 0 1px 2px 0 hsl(220 13% 91% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 13% 91% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(220 13% 91% / 0.15);
+    --shadow-elegant: 0 8px 24px -4px hsl(231 48% 35% / 0.12);
+    
+    /* Typography Scale */
+    --font-serif: 'DM Serif Display', serif;
+    --font-sans: 'Inter', sans-serif;
+    
+    /* Spacing & Layout */
+    --radius: 0.375rem;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.2;
+    color: hsl(var(--foreground));
+  }
+
+  h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+  h2 { font-size: clamp(2rem, 4vw, 3rem); }
+  h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  h4 { font-size: 1.5rem; }
+  h5 { font-size: 1.25rem; }
+  h6 { font-size: 1.125rem; }
+}
+
+@layer components {
+  /* Button Variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-3.5 text-base font-medium;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: var(--radius);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: hsl(var(--primary-hover));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-primary:hover {
+    box-shadow: var(--shadow-elegant);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-3.5 text-base font-medium;
+    background: transparent;
+    color: hsl(var(--primary));
+    border: 2px solid hsl(var(--primary));
+    border-radius: var(--radius);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-secondary:hover {
+    background: hsl(var(--accent-light));
+    transform: translateY(-2px);
+  }
+
+  /* Underline Link Animation */
+  .link-underline {
+    position: relative;
+    display: inline-block;
+    color: hsl(var(--foreground));
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: hsl(var(--primary));
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  .link-underline:hover {
+    color: hsl(var(--primary));
+  }
+
+  /* Card Styles */
+  .card-elegant {
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--border));
+    border-radius: calc(var(--radius) * 2);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+  }
+
+  .card-elegant:hover {
+    box-shadow: var(--shadow-elegant);
+    transform: translateY(-4px);
+    border-color: hsl(var(--primary) / 0.2);
+  }
+
+  /* Section Divider */
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--primary)), transparent);
+    margin: 0 auto 2rem;
+  }
+
+  /* Container */
+  .container-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animation-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animation-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
